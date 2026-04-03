@@ -144,6 +144,27 @@ class OpenAIService:
             return chunk.model_dump(mode="json")
         return {"raw": str(chunk)}
 
+    @staticmethod
+    def _extract_json_content(content: str) -> str:
+        """提取模型响应中的 JSON 内容，兼容 Markdown 代码块包裹。"""
+        normalized = content.strip()
+        if not normalized.startswith("```"):
+            return normalized
+
+        lines = normalized.splitlines()
+        if not lines:
+            return normalized
+
+        first_line = lines[0].strip().lower()
+        last_line = lines[-1].strip()
+        if not last_line.startswith("```"):
+            return normalized
+
+        if first_line in {"```", "```json", "```javascript", "```js"}:
+            return "\n".join(lines[1:-1]).strip()
+
+        return normalized
+
     async def get_available_models(self) -> List[str]:
         """获取可用模型列表。"""
         try:
@@ -307,13 +328,28 @@ class OpenAIService:
         temperature: float = 0.7,
     ) -> Dict[str, Any]:
         """收集并校验 JSON 响应。"""
-        content = await self.collect_chat_completion(
-            messages,
-            temperature=temperature,
-            response_format={"type": "json_object"},
-        )
-        try:
-            return json.loads(content)
-        except json.JSONDecodeError as exc:
-            logger.warning("模型返回非法 JSON: %s", content)
-            raise AppError("模型返回的目录数据格式无效", status_code=502) from exc
+        max_retries = 2
+
+        for attempt in range(max_retries + 1):
+            content = await self.collect_chat_completion(
+                messages,
+                temperature=temperature,
+                response_format={"type": "json_object"},
+            )
+            json_content = self._extract_json_content(content)
+
+            try:
+                return json.loads(json_content)
+            except json.JSONDecodeError as exc:
+                logger.warning(
+                    "模型返回非法 JSON，第 %s/%s 次尝试: %s",
+                    attempt + 1,
+                    max_retries + 1,
+                    content,
+                )
+                if attempt == max_retries:
+                    raise AppError(
+                        "模型返回的目录数据格式无效", status_code=502
+                    ) from exc
+
+        raise AppError("模型返回的目录数据格式无效", status_code=502)
