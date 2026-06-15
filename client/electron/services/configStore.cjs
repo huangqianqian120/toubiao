@@ -3,7 +3,7 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const { getConfigFilePath } = require('../utils/paths.cjs');
 
-const textModelProviders = ['jinlong', 'volcengine', 'deepseek', 'longcat', 'custom'];
+const textModelProviders = ['jinlong', 'volcengine', 'deepseek', 'longcat', 'ollama', 'custom'];
 const imageModelProviders = ['jinlong', 'volcengine', 'google-ai-studio', 'custom'];
 const aiRequestModes = ['normal', 'stream'];
 const updateChannels = ['github', 'cloudflare'];
@@ -14,6 +14,7 @@ const textProviderBaseUrls = {
   volcengine: 'https://ark.cn-beijing.volces.com/api/v3',
   deepseek: 'https://api.deepseek.com',
   longcat: 'https://api.longcat.chat/openai/v1',
+  ollama: 'http://localhost:11434',
   custom: '',
 };
 
@@ -43,6 +44,13 @@ const defaultTextModelProfiles = {
     api_key: '',
     base_url: textProviderBaseUrls.longcat,
     model_name: '',
+    context_length_limit: DEFAULT_TEXT_CONTEXT_LENGTH_LIMIT,
+    request_mode: 'stream',
+  },
+  ollama: {
+    api_key: '',
+    base_url: textProviderBaseUrls.ollama,
+    model_name: 'llama3',
     context_length_limit: DEFAULT_TEXT_CONTEXT_LENGTH_LIMIT,
     request_mode: 'stream',
   },

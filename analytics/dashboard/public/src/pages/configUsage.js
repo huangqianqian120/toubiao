@@ -14,6 +14,7 @@ function labelConfigValue(groupKey, value) {
       volcengine: '火山方舟',
       deepseek: 'DeepSeek',
       longcat: '龙猫',
+      ollama: 'Ollama',
       custom: '自定义文本服务',
     },
     imageProviders: { jinlong: '金龙中转站', volcengine: '火山方舟', 'google-ai-studio': 'Google AI Studio', custom: '自定义生图服务' },

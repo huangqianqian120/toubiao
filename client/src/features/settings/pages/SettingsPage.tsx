@@ -31,6 +31,7 @@ const textModelProviders: Array<{ value: TextModelProvider; label: string }> = [
   { value: 'volcengine', label: '火山方舟' },
   { value: 'deepseek', label: 'DeepSeek' },
   { value: 'longcat', label: '龙猫' },
+  { value: 'ollama', label: 'Ollama (本地)' },
   { value: 'custom', label: '自定义' },
 ];
 
@@ -46,6 +47,7 @@ const textProviderDefaults: TextModelProfiles = {
   volcengine: { api_key: '', base_url: 'https://ark.cn-beijing.volces.com/api/v3', model_name: '', context_length_limit: DEFAULT_TEXT_CONTEXT_LENGTH_LIMIT, request_mode: 'stream' },
   deepseek: { api_key: '', base_url: 'https://api.deepseek.com', model_name: '', context_length_limit: DEFAULT_TEXT_CONTEXT_LENGTH_LIMIT, request_mode: 'stream' },
   longcat: { api_key: '', base_url: 'https://api.longcat.chat/openai/v1', model_name: '', context_length_limit: DEFAULT_TEXT_CONTEXT_LENGTH_LIMIT, request_mode: 'stream' },
+  ollama: { api_key: '', base_url: 'http://localhost:11434', model_name: 'llama3', context_length_limit: DEFAULT_TEXT_CONTEXT_LENGTH_LIMIT, request_mode: 'stream' },
   custom: { api_key: '', base_url: '', model_name: '', context_length_limit: DEFAULT_TEXT_CONTEXT_LENGTH_LIMIT, request_mode: 'stream' },
 };
 
