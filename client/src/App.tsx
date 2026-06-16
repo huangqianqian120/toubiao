@@ -11,7 +11,7 @@ function isDeveloperSection(section: SectionId) {
 }
 
 function App() {
-  const [activeSection, setActiveSection] = useState<SectionId>('bid-generation');
+  const [activeSection, setActiveSection] = useState<SectionId>('technical-plan');
   const [developerMode, setDeveloperMode] = useState(false);
   const leaveGuardRef = useRef<((nextSection?: string) => Promise<boolean>) | null>(null);
 
@@ -32,7 +32,7 @@ function App() {
 
   useEffect(() => {
     if (!developerMode && isDeveloperSection(activeSection)) {
-      setActiveSection('bid-generation');
+      setActiveSection('technical-plan');
     }
   }, [activeSection, developerMode]);
 
