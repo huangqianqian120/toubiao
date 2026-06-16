@@ -551,10 +551,10 @@ button {
 .stage-card,
 .category-card,
 .empty-panel {
-  background: #1a1a1a;
-  border: 1px solid rgba(220, 223, 230, 0.88);
-  border-radius: 30px;
-  box-shadow: var(--yb-shadow);
+  background: #000000;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .hero-panel {
@@ -568,9 +568,7 @@ button {
 }
 
 .technical-hero {
-  background:
-    linear-gradient(125deg, rgba(15, 23, 42, 0.96) 0%, rgba(15, 23, 42, 0.9) 58%, rgba(16, 185, 129, 0.08) 100%),
-    radial-gradient(circle at 88% 16%, rgba(16, 185, 129, 0.18), transparent 30%);
+  background: #000000;
 }
 
 .compact-hero {
