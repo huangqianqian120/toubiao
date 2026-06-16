@@ -1172,7 +1172,7 @@ button {
   max-width: 100%;
   align-items: center;
   padding: 5px 10px;
-  color: #36547c;
+  color: var(--yb-text-soft);
   font-size: 12px;
   font-weight: 800;
   background: rgba(16, 185, 129, 0.07);
@@ -1899,9 +1899,9 @@ button {
   min-height: 460px;
   overflow: auto;
   padding: 28px 32px 36px;
-  color: #243048;
+  color: var(--yb-text);
   line-height: 1.78;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.68), #000000);
+  background: #000000;
 }
 
 .markdown-viewer > *:first-child {
@@ -3950,7 +3950,7 @@ button {
   max-height: 380px;
   overflow: auto;
   padding: 0 4px 0 0;
-  color: #243048;
+  color: var(--yb-text);
   text-align: left;
   line-height: 1.72;
   background: transparent;
