@@ -1,10 +1,6 @@
 import type { AppMenuItem, SectionId } from '../shared/types/navigation';
 
-const githubStarNotice = {
-  message: '正在开发中，在github给作者点个star，可以加速开发。',
-  actionLabel: '点此直达',
-  externalUrl: 'https://github.com/FB208/OpenBidKit_Yibiao',
-};
+const githubStarNotice = undefined;
 
 export const appMenuItems: AppMenuItem[] = [
   {
