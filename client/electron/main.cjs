@@ -303,7 +303,7 @@ function createMainWindow() {
     height: 920,
     minWidth: 1040,
     minHeight: 720,
-    backgroundColor: '#020617',
+    backgroundColor: '#000000',
     title: 'Bid Win',
     icon: fs.existsSync(iconPath) ? iconPath : undefined,
     titleBarStyle: process.platform === 'darwin' ? 'hiddenInset' : 'default',
