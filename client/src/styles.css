@@ -275,34 +275,11 @@ button {
   display: none;
 }
 
-.brand-block::before {
-  content: '✦';
-  font-size: 14px;
-  color: var(--yb-primary);
-  margin-right: 6px;
-  opacity: 0.7;
-}
-
 .brand-copy strong {
-  position: relative;
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  background: linear-gradient(135deg, var(--yb-primary-deep) 0%, #c084fc 50%, var(--yb-violet) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.brand-copy strong::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--yb-primary), transparent 80%);
-  border-radius: 1px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--yb-text);
 }
 
 .is-collapsed .brand-copy,
