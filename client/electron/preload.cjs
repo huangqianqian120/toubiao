@@ -1,7 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 const bridge = {
-  appName: '易标投标工具箱',
+  appName: 'Bid Win',
   platform: process.platform,
   getVersion: () => ipcRenderer.invoke('app:get-version'),
   getGpuHardwareAccelerationStatus: () => ipcRenderer.invoke('app:get-gpu-hardware-acceleration-status'),
